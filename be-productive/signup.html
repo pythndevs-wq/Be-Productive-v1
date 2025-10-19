@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Be Productive</title>
+  <link rel="stylesheet" href="auth_style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Create Account</h2>
+    <input type="text" id="signup-username" placeholder="Username">
+    <input type="password" id="signup-password" placeholder="Password">
+    <button id="signupBtn">Sign Up</button>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <script>
+    document.getElementById("signupBtn").addEventListener("click", () => {
+      const user = document.getElementById("signup-username").value.trim();
+      const pass = document.getElementById("signup-password").value.trim();
+      if (user && pass) {
+        localStorage.setItem("user", user);
+        alert("Account created successfully!");
+        window.location.href = "login.html";
+      } else {
+        alert("Please fill in all fields!");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be Productive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Be Productive</h1>
+    <p>Stay focused, achieve your goals, and make every minute count.</p>
+    <div class="buttons">
+      <button onclick="window.location.href='login.html'">Login</button>
+      <button onclick="window.location.href='signup.html'">Sign Up</button>
+    </div>
+  </header>
+
+  <script>
+    // Small animation
+    document.querySelector('.hero').style.opacity = '0';
+    window.onload = () => {
+      document.querySelector('.hero').style.transition = 'opacity 1.5s';
+      document.querySelector('.hero').style.opacity = '1';
+    };
+  </script>
+</body>
+</html>

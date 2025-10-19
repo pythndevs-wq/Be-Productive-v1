@@ -1,0 +1,242 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+  margin: 0;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #222;
+}
+
+#logoutBtn {
+  background: #ff6b6b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#logoutBtn:hover {
+  background: #ee5253;
+}
+
+/* Dashboard container with scrollable sections */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fadeIn 1s ease forwards;
+}
+
+.card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+/* Animate cards when visible */
+.card.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.timer-buttons button,
+#add-todo {
+  margin: 5px;
+  border: none;
+  background: #48dbfb;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.timer-buttons button:hover,
+#add-todo:hover {
+  background: #0abde3;
+}
+
+#todo-input {
+  width: 70%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#todo-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+#todo-list li {
+  background: #f1f2f6;
+  margin: 5px 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+#todo-list li span {
+  cursor: pointer;
+  color: red;
+}
+
+.progress-bar {
+  width: 100%;
+  background: #eee;
+  border-radius: 8px;
+  height: 10px;
+}
+#progress-fill {
+  width: 70%;
+  height: 10px;
+  background: #00cec9;
+  border-radius: 8px;
+  transition: width 0.5s ease;
+}
+
+/* Fade-in animation for the page */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Make scrollbar prettier */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: #48dbfb;
+  border-radius: 10px;
+}
+
+/* 🌟 Fancy Buttons for the Whole Dashboard */
+button {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(135deg, #48dbfb, #00cec9);
+  box-shadow: 0 4px 10px rgba(0, 206, 201, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Hover animation — lift slightly */
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 206, 201, 0.6);
+}
+
+/* Press-down animation */
+button:active {
+  transform: scale(0.95);
+}
+
+/* Add subtle glowing ring on hover */
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-45deg);
+  transition: left 0.4s ease;
+}
+button:hover::after {
+  left: 100%;
+}
+
+/* Special logout button color */
+#logoutBtn {
+  background: linear-gradient(135deg, #ff6b6b, #ee5253);
+  box-shadow: 0 4px 10px rgba(255, 107, 107, 0.4);
+}
+#logoutBtn:hover {
+  box-shadow: 0 8px 18px rgba(255, 107, 107, 0.6);
+}
+
+/* Add pulse animation to Start Timer button */
+#start-timer {
+  background: linear-gradient(135deg, #1dd1a1, #10ac84);
+  box-shadow: 0 4px 10px rgba(16, 172, 132, 0.4);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 172, 132, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(16, 172, 132, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 172, 132, 0); }
+}
+
+/* Pause & Reset different gradients */
+#pause-timer {
+  background: linear-gradient(135deg, #feca57, #ff9f43);
+}
+#reset-timer {
+  background: linear-gradient(135deg, #5f27cd, #341f97);
+}
+
+/* To-do Add button */
+#add-todo {
+  background: linear-gradient(135deg, #00a8ff, #0097e6);
+}
+
+/* Responsive scaling for smaller screens */
+@media (max-width: 600px) {
+  button {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+}
+
+
+

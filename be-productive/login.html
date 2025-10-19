@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Be Productive</title>
+  <link rel="stylesheet" href="auth_style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Login</h2>
+    <input type="text" id="login-username" placeholder="Username">
+    <input type="password" id="login-password" placeholder="Password">
+    <button id="loginBtn">Login</button>
+    <p>Don’t have an account? <a href="signup.html">Sign up</a></p>
+  </div>
+
+  <script>
+    document.getElementById("loginBtn").addEventListener("click", () => {
+      const user = document.getElementById("login-username").value.trim();
+      const pass = document.getElementById("login-password").value.trim();
+      if (user && pass) {
+        localStorage.setItem("user", user);
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Please enter username and password!");
+      }
+    });
+  </script>
+</body>
+</html>
